@@ -1,2 +1,23 @@
 server:
   port: 80
+
+country: china
+province: beijing
+city: beijing
+
+user1:
+  name: hyj
+  age: 19
+
+
+likes:
+  - game
+  - music
+  - food
+
+
+datasource:
+  driver: 10001
+  url: httpssss
+  name: hyj
+  password: 10085
