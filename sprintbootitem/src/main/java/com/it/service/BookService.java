@@ -23,5 +23,5 @@ public interface BookService {
     IPage<Book>getPage(int currentPage,int pageSize);
 
 
-
+    IPage<Book> getPage(int currentPage, int pageSize, Book book);
 }

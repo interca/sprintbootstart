@@ -47,7 +47,13 @@ public class BookController2 {
     }
 
     @GetMapping("/{currentPage}/{pageSize}")
-    public R getPage(@PathVariable int currentPage,@PathVariable int pageSize){
-        return new R(true ,bookService.getPage(currentPage,pageSize));
+    public R getPage(@PathVariable int currentPage,@PathVariable int pageSize,Book book){
+
+        IPage<Book>iPage=bookService.getPage(currentPage,pageSize,book);
+        //当前页码值大于最大页码值
+        if(currentPage>iPage.getPages()){
+            iPage=bookService.getPage((int) iPage.getPages(),pageSize,book);
+        }
+        return new R(true ,iPage);
     }
 }
