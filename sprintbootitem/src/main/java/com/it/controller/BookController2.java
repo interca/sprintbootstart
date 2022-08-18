@@ -7,6 +7,7 @@ import com.it.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 //restful风格
@@ -22,7 +23,7 @@ public class BookController2 {
         return new R(true,bookService.getAll());
     }
     @PostMapping
-    public  R save(@RequestBody Book book){
+    public  R save(@RequestBody Book book) throws IOException {
         return new R(bookService.save(book));
     }
 
