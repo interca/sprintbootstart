@@ -1,0 +1,29 @@
+server:
+  port: 82
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/test
+      username: root
+      password: 13538026482
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+#mybaties xml 方便使用配置文件进行书写sql
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml  #mapper
+
+#配置
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: tbl_     #数据表前缀
+      id-type: auto        #自动id生成,匹配数据库
+  configuration:
+    log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl   #日志
+
+
+
+
+
