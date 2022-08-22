@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springbootmyabites" />
-        <module name="sprintbootitem" />
         <module name="springbootqucik" />
+        <module name="sprintbootitem" />
+        <module name="springbootprofies" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="springbootmyabites" target="1.8" />
+      <module name="springbootprofies" target="1.8" />
       <module name="springbootqucik" target="1.8" />
       <module name="sprintbootitem" target="1.8" />
     </bytecodeTargetLevel>
@@ -20,6 +22,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="springbootmyabites" options="-parameters" />
+      <module name="springbootprofies" options="-parameters" />
       <module name="springbootqucik" options="-parameters" />
       <module name="sprintbootitem" options="-parameters" />
     </option>
