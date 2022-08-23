@@ -10,9 +10,11 @@
         <module name="springbootqucik" />
         <module name="sprintbootitem" />
         <module name="springbootprofies" />
+        <module name="springbootlog" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="springbootlog" target="1.8" />
       <module name="springbootmyabites" target="1.8" />
       <module name="springbootprofies" target="1.8" />
       <module name="springbootqucik" target="1.8" />
@@ -21,6 +23,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springbootlog" options="-parameters" />
       <module name="springbootmyabites" options="-parameters" />
       <module name="springbootprofies" options="-parameters" />
       <module name="springbootqucik" options="-parameters" />
