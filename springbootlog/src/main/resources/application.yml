@@ -2,4 +2,18 @@
 
 logging:
   level:
-    root: debug
+    root: info
+
+  #日志格式设置
+  #pattern:
+   # console:  "%d - %m %n"
+
+  logback:
+    rollingpolicy:
+      max-file-size: 1KB
+      file-name-pattern: server.%d{yyyy-MM-dd}.%i.log
+
+
+
+
+
