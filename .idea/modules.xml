@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-hot-deploy/spring-hot-deploy.iml" filepath="$PROJECT_DIR$/spring-hot-deploy/spring-hot-deploy.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootlog/springbootlog.iml" filepath="$PROJECT_DIR$/springbootlog/springbootlog.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootmyabites/springbootmyabites.iml" filepath="$PROJECT_DIR$/springbootmyabites/springbootmyabites.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootprofies/springbootprofies.iml" filepath="$PROJECT_DIR$/springbootprofies/springbootprofies.iml" />

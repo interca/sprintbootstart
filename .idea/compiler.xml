@@ -11,9 +11,11 @@
         <module name="sprintbootitem" />
         <module name="springbootprofies" />
         <module name="springbootlog" />
+        <module name="spring-hot-deploy" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-hot-deploy" target="1.8" />
       <module name="springbootlog" target="1.8" />
       <module name="springbootmyabites" target="1.8" />
       <module name="springbootprofies" target="1.8" />
@@ -23,6 +25,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-hot-deploy" options="-parameters" />
       <module name="springbootlog" options="-parameters" />
       <module name="springbootmyabites" options="-parameters" />
       <module name="springbootprofies" options="-parameters" />
