@@ -1,0 +1,8 @@
+2022-09-04 18:27:25.559  INFO 11228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 18:27:25.571  INFO 11228 --- [main] com.it.SpringbootlogApplication          : Started SpringbootlogApplication in 1.228 seconds (JVM running for 1.911)
+2022-09-04 18:27:41.522  INFO 11228 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 18:27:41.522  INFO 11228 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-04 18:27:41.523  INFO 11228 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-09-04 18:27:41.540  INFO 11228 --- [http-nio-8080-exec-1] com.it.controller.BookController         : info
+2022-09-04 18:27:41.540  WARN 11228 --- [http-nio-8080-exec-1] com.it.controller.BookController         : warn
+2022-09-04 18:27:41.540 ERROR 11228 --- [http-nio-8080-exec-1] com.it.controller.BookController         : error
