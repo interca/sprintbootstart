@@ -12,7 +12,7 @@ import java.util.List;
 
 //restful风格
 @RestController
-@RequestMapping("books")
+@RequestMapping("/books")
 public class BookController2 {
     @Autowired
    private BookService bookService;
