@@ -42,6 +42,7 @@ public class BookController2 {
 
     @GetMapping("/{id}")
     public R getById(@PathVariable int id){
+        System.out.println("hyj111111");
 
         return new R(true,bookService.getById(id));
     }
@@ -57,3 +58,4 @@ public class BookController2 {
         return new R(true ,iPage);
     }
 }
+
