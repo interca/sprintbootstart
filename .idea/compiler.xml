@@ -7,14 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springbootmyabites" />
+        <module name="springbootprofies" />
+        <module name="spring-hot-deploy" />
         <module name="springbootqucik" />
         <module name="sprintbootitem" />
-        <module name="springbootprofies" />
+        <module name="mybatis-plus" />
         <module name="springbootlog" />
-        <module name="spring-hot-deploy" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="mybatis-plus" target="1.8" />
       <module name="spring-hot-deploy" target="1.8" />
       <module name="springbootlog" target="1.8" />
       <module name="springbootmyabites" target="1.8" />
@@ -25,6 +27,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mybatis-plus" options="-parameters" />
       <module name="spring-hot-deploy" options="-parameters" />
       <module name="springbootlog" options="-parameters" />
       <module name="springbootmyabites" options="-parameters" />
