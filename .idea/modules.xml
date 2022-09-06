@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" filepath="$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatise-plus-generator/mybatise-plus-generator.iml" filepath="$PROJECT_DIR$/mybatise-plus-generator/mybatise-plus-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-hot-deploy/spring-hot-deploy.iml" filepath="$PROJECT_DIR$/spring-hot-deploy/spring-hot-deploy.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootlog/springbootlog.iml" filepath="$PROJECT_DIR$/springbootlog/springbootlog.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootmyabites/springbootmyabites.iml" filepath="$PROJECT_DIR$/springbootmyabites/springbootmyabites.iml" />

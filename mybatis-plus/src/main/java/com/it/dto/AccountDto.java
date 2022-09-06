@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @TableName("account")
 public class AccountDto {
-    int id;
+    int uid;
     String name;
     int money;
 

@@ -44,7 +44,7 @@ class MybatisPlusApplicationTests {
 	@Test
 	void update(){
 		AccountDto accountDto=new AccountDto();
-		accountDto.setId(12);
+		accountDto.setUid(12);
 		accountDto.setName("sb12");
 		accountDto.setMoney(12);
 		accountMapper.updateById(accountDto);
@@ -88,7 +88,7 @@ class MybatisPlusApplicationTests {
 		//按条件查询
 		LambdaQueryWrapper<AccountDto> wrapper=new LambdaQueryWrapper<>();
 		//多条件查询或者关系
-		wrapper.lt(AccountDto::getId,10).or().gt(AccountDto::getId,14);
+		wrapper.lt(AccountDto::getUid,10).or().gt(AccountDto::getUid,14);
 		List<AccountDto> accountDtos = accountMapper.selectList( wrapper);
 		for(AccountDto k:accountDtos){
 			System.out.println(k);

@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/springbootlog/pom.xml" />
         <option value="$PROJECT_DIR$/spring-hot-deploy/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis-plus/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatise-plus-generator/pom.xml" />
       </list>
     </option>
   </component>
