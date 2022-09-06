@@ -10,6 +10,7 @@
         <module name="mybatise-plus-generator" />
         <module name="springbootprofies" />
         <module name="spring-hot-deploy" />
+        <module name="spring-security" />
         <module name="springbootqucik" />
         <module name="sprintbootitem" />
         <module name="mybatis-plus" />
@@ -20,6 +21,7 @@
       <module name="mybatis-plus" target="1.8" />
       <module name="mybatise-plus-generator" target="1.8" />
       <module name="spring-hot-deploy" target="1.8" />
+      <module name="spring-security" target="1.8" />
       <module name="springbootlog" target="1.8" />
       <module name="springbootmyabites" target="1.8" />
       <module name="springbootprofies" target="1.8" />
@@ -32,6 +34,7 @@
       <module name="mybatis-plus" options="-parameters" />
       <module name="mybatise-plus-generator" options="-parameters" />
       <module name="spring-hot-deploy" options="-parameters" />
+      <module name="spring-security" options="-parameters" />
       <module name="springbootlog" options="-parameters" />
       <module name="springbootmyabites" options="-parameters" />
       <module name="springbootprofies" options="-parameters" />
