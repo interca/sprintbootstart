@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserDetailsService {
         System.out.println(user);
         //用户不存在
         if(Objects.isNull(user)){
-           throw new RuntimeException("用户名或者密码错误");
+           throw new RuntimeException("用户名不存在");
         }
         //封装成UserDetails返回
         return new LoginUser(user);

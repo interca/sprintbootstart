@@ -24,8 +24,8 @@ class SpringSecurityApplicationTests {
     void test2(){
         BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
         //对密码进行加密
-        String encode = passwordEncoder.encode("1234");
-        System.out.println(passwordEncoder.matches("1234",encode));
+        String encode = passwordEncoder.encode("123456");
+        System.out.println(encode);
 
     }
 
