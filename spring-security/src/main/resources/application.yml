@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/test
+      url: jdbc:mysql://localhost:3306/spring-boot
       username: root
       password: 13538026482
       driver-class-name: com.mysql.cj.jdbc.Driver
