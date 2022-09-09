@@ -8,5 +8,16 @@ import com.it.util.SystemJsonResponse;
  */
 public interface LoginService {
 
-    SystemJsonResponse login(User user);
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
+    SystemJsonResponse login(User user) ;
+
+    /**
+     * 退出登录
+     * @return
+     */
+    SystemJsonResponse logout();
 }

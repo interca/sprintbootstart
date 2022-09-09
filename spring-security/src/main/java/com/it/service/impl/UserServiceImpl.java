@@ -1,9 +1,11 @@
 package com.it.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.it.Exception.GlobalSystemException;
 import com.it.domain.LoginUser;
 import com.it.domain.User;
 import com.it.mapper.UserMapper;
+import com.it.util.SystemJsonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,7 +33,7 @@ public class UserServiceImpl implements UserDetailsService {
         User user = userMapper.selectOne(queryWrapper);
         //用户不存在
         if(Objects.isNull(user)){
-           throw new RuntimeException("用户名不存在");
+           throw new GlobalSystemException(SystemJsonResponse.fail("用户不存在"));
         }
         //封装成UserDetails返回
         return new LoginUser(user);

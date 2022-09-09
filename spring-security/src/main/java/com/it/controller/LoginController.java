@@ -6,6 +6,7 @@ import com.it.util.SystemJsonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,10 +19,23 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * 登录接口
+     * @param user
+     * @return
+     */
     @PostMapping("/user/login")
     public SystemJsonResponse login(@RequestBody User user){
         SystemJsonResponse login = loginService.login(user);
-        System.out.println("方法");
         return  login;
     }
+
+    /**
+     *退出
+     */
+    @RequestMapping("/user/logout")
+    public SystemJsonResponse logout(){
+        return loginService.logout();
+    }
+
 }

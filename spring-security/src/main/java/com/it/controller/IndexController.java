@@ -1,16 +1,17 @@
 package com.it.controller;
 
 
+import com.it.util.SystemJsonResponse;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 public class IndexController {
-    @RequestMapping("/hello")
-    public  String test(){
-        System.out.println(1);
-        return "ssss";
+    @PostMapping("/hello")
+    public SystemJsonResponse test(){
+        return SystemJsonResponse.success();
     }
 }
 

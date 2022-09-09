@@ -1,9 +1,11 @@
 package com.it.filter;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.it.Exception.GlobalSystemException;
 import com.it.domain.User;
 import com.it.mapper.UserMapper;
 import com.it.util.JwtUtil;
+import com.it.util.SystemJsonResponse;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,13 +35,16 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
    private UserMapper userMapper;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain){
         //获取token,从请求头中
         String token = request.getHeader("token");
         //字符串为空
         if (!StringUtils.hasText(token)) {
-            //放行
-            filterChain.doFilter(request, response);
+            try {
+                filterChain.doFilter(request, response);
+            } catch (Exception e) {
+                throw new GlobalSystemException(SystemJsonResponse.fail("系统异常"));
+            }
             return;
         }
         //解析token
@@ -48,16 +53,15 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             Claims claims = JwtUtil.parseJWT(token);
             userid = claims.getSubject();
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("token非法");
+            throw new GlobalSystemException(SystemJsonResponse.fail("token不合法"));
         }
 
         //从数据库中获取信息，看是否登录
         LambdaQueryWrapper<User>qw=new LambdaQueryWrapper<>();
         qw.eq(User::getId,userid);
         User loginUser= userMapper.selectOne(qw);
-        if(Objects.isNull(loginUser)){
-            throw new RuntimeException("用户未登录");
+        if(loginUser.getIsLogin()==0){
+            throw new GlobalSystemException(SystemJsonResponse.fail("用户未登录"));
         }
 
         //存入SecurityContextHolder
@@ -66,7 +70,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 new UsernamePasswordAuthenticationToken(loginUser,null,null);
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         //放行
-        filterChain.doFilter(request, response);
+        try {
+            filterChain.doFilter(request, response);
+        }  catch (Exception e) {
+            throw new GlobalSystemException(SystemJsonResponse.fail("系统异常"));
+        }
     }
 
 
