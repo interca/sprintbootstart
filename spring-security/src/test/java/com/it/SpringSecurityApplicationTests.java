@@ -1,5 +1,6 @@
 package com.it;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.it.domain.User;
 import com.it.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,9 @@ class SpringSecurityApplicationTests {
     private UserMapper userMapper;
     @Test
     void contextLoads() {
-        List<User> userList = userMapper.selectList(null);
+        LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(User::getUserName,"黄裕甲");
+        List<User> userList = userMapper.selectList(queryWrapper);
         System.out.println(userList);
     }
 

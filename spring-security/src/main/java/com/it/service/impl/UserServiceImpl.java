@@ -1,4 +1,4 @@
-package com.it.service.Impl;
+package com.it.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.it.domain.LoginUser;
@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserDetailsService {
         LambdaQueryWrapper<User>queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.eq(User::getUserName,username);
         User user = userMapper.selectOne(queryWrapper);
-        System.out.println(user);
         //用户不存在
         if(Objects.isNull(user)){
            throw new RuntimeException("用户名不存在");
@@ -38,3 +37,4 @@ public class UserServiceImpl implements UserDetailsService {
         return new LoginUser(user);
     }
 }
+
