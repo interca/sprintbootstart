@@ -12,8 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 /**
@@ -28,7 +31,7 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private UserMapper userMapper;
     @Override
-    public SystemJsonResponse login(User user)  {
+    public SystemJsonResponse login(User user) throws GlobalSystemException {
         //进行用户认证,
         UsernamePasswordAuthenticationToken authenticationToken=
                 new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
@@ -36,10 +39,10 @@ public class LoginServiceImpl implements LoginService {
         //认证失败
         if(Objects.isNull(authenticate))throw  new GlobalSystemException(SystemJsonResponse.fail("登录失败"));
         //认证成功,用userid生成jwt，存入result中返回
-
         //改变数据库的登录状态
         LambdaQueryWrapper<User>lq=new LambdaQueryWrapper<>();
         user.setIsLogin(1);
+        user.setPassword(null);
         lq.eq(User::getUserName,user.getUserName());
         userMapper.update(user,lq);
         //强转
@@ -52,7 +55,17 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public SystemJsonResponse logout() {
-        //获取SecurityContextHolder中用户信息
+        UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext();
+       LoginUser loginUser = (LoginUser) authenticationToken.getPrincipal();
+
+        User user=new User();
+        user.setId(loginUser.getUser().getId());
+        user.setIsLogin(0);
+        LambdaQueryWrapper<User>lq=new LambdaQueryWrapper<>();
+        lq.eq(User::getId,user.getId());
+        userMapper.update(user,lq);
         return SystemJsonResponse.success();
     }
 }
+
+

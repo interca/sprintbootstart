@@ -3,6 +3,9 @@ package com.it.service;
 import com.it.domain.User;
 import com.it.util.SystemJsonResponse;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 登录接口的service
  */
