@@ -21,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -61,22 +64,17 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         //从数据库中获取信息，看是否登录
         LambdaQueryWrapper<User>qw=new LambdaQueryWrapper<>();
         qw.eq(User::getId,userid);
-        User loginUser= userMapper.selectOne(qw);
-        if(loginUser.getIsLogin()==0){
+        User User= userMapper.selectOne(qw);
+        if(User.getIsLogin()==0){
            throw  new GlobalSystemException(SystemJsonResponse.fail("用户未登录"));
         }
+        List<String> permission=new ArrayList<>(Arrays.asList("test","admin"));
+        LoginUser loginUser = new LoginUser(User, permission);
         //存入SecurityContextHolder
         //TODO 获取权限信息封装到Authentication中
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(new LoginUser(loginUser),null,null);
+                new UsernamePasswordAuthenticationToken(loginUser,null,loginUser.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-
-        /**
-         *   UsernamePasswordAuthenticationToken authenticationToken1 = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext();
-         *         LoginUser loginUser1 = (LoginUser) authenticationToken1.getPrincipal();
-         *         System.out.println(loginUser1.getUser());
-         */
-
 
           //放行
         filterChain.doFilter(request, response);

@@ -6,12 +6,16 @@ import com.it.domain.LoginUser;
 import com.it.domain.User;
 import com.it.mapper.UserMapper;
 import com.it.util.SystemJsonResponse;
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -35,8 +39,12 @@ public class UserServiceImpl implements UserDetailsService {
         if(Objects.isNull(user)){
            throw new GlobalSystemException(SystemJsonResponse.fail("用户不存在"));
         }
+        // TODO查询对应的权限信息
+        //保存权限
+        List<String>permission=new ArrayList<>(Arrays.asList("test","admin"));
+
         //封装成UserDetails返回
-        return new LoginUser(user);
+        return new LoginUser(user,permission);
     }
 }
 
