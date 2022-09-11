@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
     @PostMapping("/hello")
-    @PreAuthorize("hasAuthority('test')")
+    @PreAuthorize("hasAuthority('system:dept:list')")
     public SystemJsonResponse test(){
         System.out.println(SystemJsonResponse.success());return SystemJsonResponse.success();
     }

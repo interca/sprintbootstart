@@ -106,3 +106,14 @@ CREATE TABLE `sys_user_role` (
                                  `role_id` bigint(200) NOT NULL DEFAULT '0' COMMENT '角色id',
                                  PRIMARY KEY (`user_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+#查用户的权限名称
+select  distinct m.perms from sys_user_role  ur
+                                  left join
+                              sys_role r on ur.role_id=r.id
+                                  left join sys_role_menu srm on ur.role_id = srm.role_id
+                                  left join sys_menu m on m.id=srm.menu_id
+where user_id=2
+  and r.status=0
+  and m.status=0;

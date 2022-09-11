@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.it.Exception.GlobalSystemException;
 import com.it.domain.LoginUser;
 import com.it.domain.User;
+import com.it.mapper.MenuMapper;
 import com.it.mapper.UserMapper;
 import com.it.util.SystemJsonResponse;
 import com.sun.xml.internal.bind.v2.TODO;
@@ -29,6 +30,8 @@ public class UserServiceImpl implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private MenuMapper menuMapper;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //查询
@@ -39,10 +42,8 @@ public class UserServiceImpl implements UserDetailsService {
         if(Objects.isNull(user)){
            throw new GlobalSystemException(SystemJsonResponse.fail("用户不存在"));
         }
-        // TODO查询对应的权限信息
-        //保存权限
-        List<String>permission=new ArrayList<>(Arrays.asList("test","admin"));
-
+        // 查询对应的权限信息
+        List<String> permission = menuMapper.selectPermsByUserId(user.getId());
         //封装成UserDetails返回
         return new LoginUser(user,permission);
     }
