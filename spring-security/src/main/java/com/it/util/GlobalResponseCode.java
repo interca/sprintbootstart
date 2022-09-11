@@ -41,9 +41,9 @@ public enum GlobalResponseCode {
     USER_ACCOUNT_OVERDUE(3002,"账号过期"),
     USER_ACCOUNT_LOGOFF(3002,"账号下线"),
     USER_NOT_PERMISSIONS(3003,"账号无权限访问"),
-    USER_NOT_RESOURCE(3004,"请求资源不存在");
+    USER_NOT_RESOURCE(3004,"请求资源不存在"),
 
-
+    USER_ACCOUNT_PASSWORD_Error(3005,"账户或者密码错误");
     private Integer code;
     private String message;
 

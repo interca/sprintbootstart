@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserDetailsService {
         User user = userMapper.selectOne(queryWrapper);
         //用户不存在
         if(Objects.isNull(user)){
-           throw new GlobalSystemException(SystemJsonResponse.fail("用户不存在"));
+           throw new RuntimeException("用户不存在");
         }
         // 查询对应的权限信息
         List<String> permission = menuMapper.selectPermsByUserId(user.getId());

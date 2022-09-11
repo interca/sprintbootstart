@@ -60,7 +60,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         try {
             claims = JwtUtil.parseJWT(token);
         } catch (Exception e) {
-            throw new GlobalSystemException(SystemJsonResponse.fail("token不合法"));
+            throw new RemoteException("token不合法");
         }
         userid = claims.getSubject();
 

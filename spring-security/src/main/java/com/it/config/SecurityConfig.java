@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.naming.AuthenticationException;
@@ -48,6 +50,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
+     * 认证异常
+     */
+    @Autowired
+    private AuthenticationEntryPoint authenticationEntryPoint;
+
+    /**
+     * 授权
+     */
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
+
+    /**
      * 对登录进行放行
      */
     @Override
@@ -66,6 +80,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //将滤器配置加入security框架,请求时候验证有没有登录
         http.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+        //配置异常处理器
+        http.exceptionHandling()
+                //认证失败
+                .authenticationEntryPoint(authenticationEntryPoint)
+                //授权失败
+                .accessDeniedHandler(accessDeniedHandler);
+
+
     }
 
 
