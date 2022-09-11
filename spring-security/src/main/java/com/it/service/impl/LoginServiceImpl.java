@@ -35,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
                 new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
         //认证失败
-        if(Objects.isNull(authenticate))throw  new GlobalSystemException(SystemJsonResponse.fail("登录失败"));
+        if(Objects.isNull(authenticate))throw  new RuntimeException("密码错误");
         //认证成功,用userid生成jwt，存入result中返回
         //改变数据库的登录状态
         LambdaQueryWrapper<User>lq=new LambdaQueryWrapper<>();
@@ -55,16 +55,13 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public SystemJsonResponse logout() {
             //获取  SecurityContextHolder里面的用户id
-            System.out.println("注销2");
             UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-           System.out.println("注销3");
         LoginUser loginUser = null;
         try {
             loginUser = (LoginUser) authenticationToken.getPrincipal();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         }
-        System.out.println("注销4");
             User user=new User();
             user.setId(loginUser.getUser().getId());
             user.setIsLogin(0);

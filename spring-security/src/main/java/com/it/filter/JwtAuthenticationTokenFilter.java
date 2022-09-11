@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +41,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
    private UserMapper userMapper;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws GlobalSystemException, ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //获取token,从请求头中
         String token = request.getHeader("token");
         //字符串为空
@@ -66,7 +67,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         qw.eq(User::getId,userid);
         User User= userMapper.selectOne(qw);
         if(User.getIsLogin()==0){
-           throw  new GlobalSystemException(SystemJsonResponse.fail("用户未登录"));
+           //throw  new GlobalSystemException(SystemJsonResponse.fail("用户未登录"));
+            throw  new RuntimeException("用户未登录");
         }
         List<String> permission=new ArrayList<>(Arrays.asList("test","admin"));
         LoginUser loginUser = new LoginUser(User, permission);
@@ -82,4 +84,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
 
 }
+
+
+
+
 

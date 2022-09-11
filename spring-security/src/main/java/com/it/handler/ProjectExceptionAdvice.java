@@ -26,9 +26,16 @@ public class ProjectExceptionAdvice {
         return systemException.getSystemJsonResponse();
     }
 
-   @Order(1)
+
        @ExceptionHandler(Exception.class)
        public SystemJsonResponse systemJsonResponse2(Exception e){
-           return SystemJsonResponse.fail();
+           System.out.println("exce");
+           return SystemJsonResponse.fail(e.getMessage());
+        }
+
+        @ExceptionHandler(RuntimeException.class)
+        public SystemJsonResponse systemJsonResponse3(RuntimeException e){
+            System.out.println("run");
+            return SystemJsonResponse.fail(e.getMessage());
         }
 }
