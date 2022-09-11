@@ -26,6 +26,7 @@ public class LoginController {
      */
     @PostMapping("/user/login")
     public SystemJsonResponse login(@RequestBody User user){
+        System.out.println("login");
         return  loginService.login(user);
     }
 
@@ -34,7 +35,7 @@ public class LoginController {
      */
     @RequestMapping("/user/logout")
     public SystemJsonResponse logout(){
-        System.out.println("sss");
+        System.out.println("注销1");
         return loginService.logout();
     }
 

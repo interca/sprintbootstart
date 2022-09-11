@@ -2,6 +2,7 @@ package com.it.filter;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.it.Exception.GlobalSystemException;
+import com.it.domain.LoginUser;
 import com.it.domain.User;
 import com.it.mapper.UserMapper;
 import com.it.util.JwtUtil;
@@ -67,10 +68,18 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         //存入SecurityContextHolder
         //TODO 获取权限信息封装到Authentication中
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginUser,null,null);
+                new UsernamePasswordAuthenticationToken(new LoginUser(loginUser),null,null);
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+        /**
+         *   UsernamePasswordAuthenticationToken authenticationToken1 = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext();
+         *         LoginUser loginUser1 = (LoginUser) authenticationToken1.getPrincipal();
+         *         System.out.println(loginUser1.getUser());
+         */
+
+
           //放行
-            filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response);
     }
 
 

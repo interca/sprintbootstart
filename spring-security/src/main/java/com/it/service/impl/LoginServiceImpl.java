@@ -12,11 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 /**
@@ -53,19 +51,29 @@ public class LoginServiceImpl implements LoginService {
         return  SystemJsonResponse.success(jwt);
     }
 
+    //退出登录
     @Override
     public SystemJsonResponse logout() {
-        UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext();
-       LoginUser loginUser = (LoginUser) authenticationToken.getPrincipal();
+            //获取  SecurityContextHolder里面的用户id
+            System.out.println("注销2");
+            UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+           System.out.println("注销3");
+        LoginUser loginUser = null;
+        try {
+            loginUser = (LoginUser) authenticationToken.getPrincipal();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("注销4");
+            User user=new User();
+            user.setId(loginUser.getUser().getId());
+            user.setIsLogin(0);
+            System.out.println("user"+user);
+            LambdaQueryWrapper<User>lq=new LambdaQueryWrapper<>();
+            lq.eq(User::getId,user.getId());
+            userMapper.update(user,lq);
+            return SystemJsonResponse.success();
 
-        User user=new User();
-        user.setId(loginUser.getUser().getId());
-        user.setIsLogin(0);
-        LambdaQueryWrapper<User>lq=new LambdaQueryWrapper<>();
-        lq.eq(User::getId,user.getId());
-        userMapper.update(user,lq);
-        return SystemJsonResponse.success();
     }
 }
-
 
