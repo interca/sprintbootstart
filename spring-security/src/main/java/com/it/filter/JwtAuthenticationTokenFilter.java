@@ -45,7 +45,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
    @Autowired
    private MenuMapper menuMapper;
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws RuntimeException,ServletException, IOException {
         //获取token,从请求头中
         String token = request.getHeader("token");
         //字符串为空
@@ -91,6 +91,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
 
 }
+
 
 
 

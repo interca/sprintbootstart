@@ -18,23 +18,23 @@ import java.rmi.server.ServerCloneException;
  * 拦截并且处理异常
  */
 
-//@RestControllerAdvice
+@RestControllerAdvice
 public class ProjectExceptionAdvice {
 
-   // @ExceptionHandler(GlobalSystemException.class)
+    @ExceptionHandler(GlobalSystemException.class)
     public SystemJsonResponse systemJsonResponse(GlobalSystemException systemException){
         System.out.println("ssss");
         return systemException.getSystemJsonResponse();
     }
 
 
-       //@ExceptionHandler(Exception.class)
+       @ExceptionHandler(Exception.class)
        public SystemJsonResponse systemJsonResponse2(Exception e){
            System.out.println("exce");
            return SystemJsonResponse.fail(e.getMessage());
         }
 
-       // @ExceptionHandler(RuntimeException.class)
+        @ExceptionHandler(RuntimeException.class)
         public SystemJsonResponse systemJsonResponse3(RuntimeException e){
             System.out.println("run");
             return SystemJsonResponse.fail(e.getMessage());
