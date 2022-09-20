@@ -30,7 +30,6 @@ public class LoginUser implements UserDetails {
         this.user = user;
         this.permission = permission;
     }
-
     /**
      *
      * @return 权限
