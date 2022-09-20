@@ -18,7 +18,7 @@ import java.io.IOException;
  * @since 2022-9-12
  */
 @Component
-public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
+public class AccessDeniedHandlerImpl implements AccessDeniedHandler{
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
         SystemJsonResponse systemJsonResponse=new SystemJsonResponse

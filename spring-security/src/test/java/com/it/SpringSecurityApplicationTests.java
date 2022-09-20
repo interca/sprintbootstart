@@ -22,7 +22,7 @@ class SpringSecurityApplicationTests {
     @Test
     void contextLoads() {
         LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(User::getUserName,"黄裕甲");
+        queryWrapper.eq(User::getUserName,"hyj");
         List<User> userList = userMapper.selectList(queryWrapper);
         System.out.println(userList);
     }

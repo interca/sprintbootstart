@@ -24,7 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
                //允许访问路径
                .addMapping("/**")
                //配置请求来源
-               .allowedOrigins("*")
+               .allowedOriginPatterns("*")
                //允许访问的方法
                .allowedMethods("GET","POST","DELETE","PUT","OPTION")
                //最大效应时间

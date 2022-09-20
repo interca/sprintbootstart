@@ -30,6 +30,7 @@ public class LoginServiceImpl implements LoginService {
     private UserMapper userMapper;
     @Override
     public SystemJsonResponse login(User user) throws GlobalSystemException {
+        System.out.println("登录2");
         //进行用户认证,
         UsernamePasswordAuthenticationToken authenticationToken=
                 new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());

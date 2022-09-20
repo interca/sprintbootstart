@@ -52,14 +52,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 认证异常
      */
-    @Autowired
-    private AuthenticationEntryPoint authenticationEntryPoint;
+   @Autowired
+   private AuthenticationEntryPoint authenticationEntryPoint;
 
     /**
      * 授权
      */
     @Autowired
-    private AccessDeniedHandler accessDeniedHandler;
+   private AccessDeniedHandler accessDeniedHandler;
 
     /**
      * 对登录进行放行
