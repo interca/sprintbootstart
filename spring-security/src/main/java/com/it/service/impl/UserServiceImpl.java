@@ -25,7 +25,7 @@ import java.util.Objects;
  * @since 2022-9-7
  */
 @Service
-public class UserServiceImpl implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService{
 
     @Autowired
     private UserMapper userMapper;
