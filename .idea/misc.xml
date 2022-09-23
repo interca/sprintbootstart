@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/mybatise-plus-generator/pom.xml" />
         <option value="$PROJECT_DIR$/spring-security/pom.xml" />
         <option value="$PROJECT_DIR$/redis1/pom.xml" />
+        <option value="$PROJECT_DIR$/springDataRedis/pom.xml" />
       </list>
     </option>
   </component>

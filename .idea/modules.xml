@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/redis1/redis1.iml" filepath="$PROJECT_DIR$/redis1/redis1.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-hot-deploy/spring-hot-deploy.iml" filepath="$PROJECT_DIR$/spring-hot-deploy/spring-hot-deploy.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-security/spring-security.iml" filepath="$PROJECT_DIR$/spring-security/spring-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springDataRedis/springDataRedis.iml" filepath="$PROJECT_DIR$/springDataRedis/springDataRedis.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootlog/springbootlog.iml" filepath="$PROJECT_DIR$/springbootlog/springbootlog.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootmyabites/springbootmyabites.iml" filepath="$PROJECT_DIR$/springbootmyabites/springbootmyabites.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootprofies/springbootprofies.iml" filepath="$PROJECT_DIR$/springbootprofies/springbootprofies.iml" />

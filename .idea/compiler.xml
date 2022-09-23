@@ -16,6 +16,7 @@
         <module name="sprintbootitem" />
         <module name="mybatis-plus" />
         <module name="springbootlog" />
+        <module name="springDataRedis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,6 +29,7 @@
       <module name="springbootmyabites" target="1.8" />
       <module name="springbootprofies" target="1.8" />
       <module name="springbootqucik" target="1.8" />
+      <module name="springDataRedis" target="1.8" />
       <module name="sprintbootitem" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -38,6 +40,7 @@
       <module name="redis1" options="-parameters" />
       <module name="spring-hot-deploy" options="-parameters" />
       <module name="spring-security" options="-parameters" />
+      <module name="springDataRedis" options="-parameters" />
       <module name="springbootlog" options="-parameters" />
       <module name="springbootmyabites" options="-parameters" />
       <module name="springbootprofies" options="-parameters" />
