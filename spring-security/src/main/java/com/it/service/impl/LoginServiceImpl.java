@@ -71,7 +71,6 @@ public class LoginServiceImpl implements LoginService {
             lq.eq(User::getId,user.getId());
             userMapper.update(user,lq);
             return SystemJsonResponse.success();
-
     }
 }
 

@@ -7,7 +7,6 @@ import com.it.domain.User;
 import com.it.mapper.MenuMapper;
 import com.it.mapper.UserMapper;
 import com.it.util.JwtUtil;
-import com.it.util.SystemJsonResponse;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -81,7 +80,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
         //存入SecurityContextHolder
         //TODO 获取权限信息封装到Authentication中
-        UsernamePasswordAuthenticationToken authenticationToken =
+       UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginUser,null,loginUser.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 

@@ -27,6 +27,7 @@ public class LoginController {
     @PostMapping("/user/login")
     public SystemJsonResponse login(@RequestBody User user){
         System.out.println("login");
+        System.out.println(user);
         return  loginService.login(user);
     }
 

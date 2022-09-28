@@ -12,14 +12,14 @@ class SpringDataRedisApplicationTests {
 	//@Qualifier("stringRedisTemplate")
 
 
-	@Qualifier("stringRedisTemplate")
 	@Autowired
-	private RedisTemplate template;
+	private RedisTemplate<String,Object>template;
 	@Test
 	void contextLoads() {
 		//template.opsForValue().set("p",new User("hyj",12));
-		 template.opsForValue().set("name",new User("hyj",12));
-
+		 //template.opsForValue().set("name",new User("HYJ",12));
+		Object name = template.opsForValue().get("name");
+		System.out.println(name);
 	}
 
 }

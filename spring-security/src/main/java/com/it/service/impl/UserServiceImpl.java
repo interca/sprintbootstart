@@ -48,5 +48,7 @@ public class UserServiceImpl implements UserDetailsService{
         //封装成UserDetails返回
         return new LoginUser(user,permission);
     }
+
+
 }
 
